@@ -43,7 +43,7 @@ Atau Lebih Jelasnya
 | A23    | 10.64.15.232    | 255.255.255.252  | 10.64.15.235   | 10.64.15.233 – 10.64.15.234      |
 
 ### Tree VLSM
-<img width="21883" height="6910" alt="Tanpa judul-2025-10-23-2205 excalidraw" src="https://github.com/user-attachments/assets/1e627d6e-1eae-4e7b-afb8-112dd0c5b1fd" />
+<img width="22024" height="6902" alt="Vlsm-Praktikum" src="https://github.com/user-attachments/assets/ae3293b8-d87e-472f-8fe0-1342f5394415" />
 
 
 ### Config VLSM
