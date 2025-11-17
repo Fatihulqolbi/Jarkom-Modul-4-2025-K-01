@@ -5,6 +5,9 @@
 | Muhammad Fatihul Qolbi Ash Shiddiqi   | 5027241023 | 
 | Hansen Chang                          | 5027241028 | 
 
+## Rute
+<img width="798" height="578" alt="image" src="https://github.com/user-attachments/assets/c6daefd3-4750-446b-b69a-72e7c869ba35" />
+
 ## GNS ( VLSM )
 Untuk metode VLSM, kami menggunakan GNS3 sebagai platformnya
 
@@ -12,7 +15,7 @@ Untuk metode VLSM, kami menggunakan GNS3 sebagai platformnya
 <img width="2301" height="1301" alt="VLSM drawio" src="https://github.com/user-attachments/assets/ad706ebf-77da-486f-9a70-48db8801bf2b" />
 
 ### Pembagian IP 
-<img width="760" height="627" alt="image" src="https://github.com/user-attachments/assets/31e41dad-f6d4-4843-b2f9-7e2e82b86db3" />
+<img width="850" height="625" alt="image" src="https://github.com/user-attachments/assets/8bce2cca-b3cf-4b35-a27a-d62a397826f9" />
 
 Atau Lebih Jelasnya 
 
@@ -45,6 +48,5 @@ Atau Lebih Jelasnya
 
 ### Tree VLSM
 <img width="22024" height="6902" alt="Vlsm-Praktikum" src="https://github.com/user-attachments/assets/ae3293b8-d87e-472f-8fe0-1342f5394415" />
-
 
 ### Config VLSM
