@@ -50,3 +50,298 @@ Atau Lebih Jelasnya
 <img width="22024" height="6902" alt="Vlsm-Praktikum" src="https://github.com/user-attachments/assets/ae3293b8-d87e-472f-8fe0-1342f5394415" />
 
 ### Config VLSM
+
+## AMONSUL (ROUTER PUSAT)
+
+```
+# A7 - to Fornost
+auto eth0
+iface eth0 inet static
+    address 10.64.15.202
+    netmask 255.255.255.252
+    gateway 10.64.15.201
+
+# A18 - to Minastir
+auto eth1
+iface eth1 inet static
+    address 10.64.15.213
+    netmask 255.255.255.252
+
+# A19 - to Eregion
+auto eth2
+iface eth2 inet static
+    address 10.64.15.217
+    netmask 255.255.255.252
+
+# A17 - to NAT1
+auto eth3
+iface eth3 inet static
+    address 10.64.15.210
+    netmask 255.255.255.252
+
+# Default route to NAT
+post-up route add default gw 10.64.15.209
+
+# Route to A6 (Fornost side)
+post-up route add -net 10.64.14.0 netmask 255.255.255.128 gw 10.64.15.201
+
+# Route to A15, A14, A13 (via Minastir)
+post-up route add -net 10.64.15.193 netmask 255.255.255.248 gw 10.64.15.214
+post-up route add -net 10.64.15.185 netmask 255.255.255.248 gw 10.64.15.214
+post-up route add -net 10.64.15.1   netmask 255.255.255.192 gw 10.64.15.214
+
+# Route to A12, A5, A8, A3, A2 via Eregion
+post-up route add -net 10.64.4.0 netmask 255.255.252.0 gw 10.64.15.218
+post-up route add -net 10.64.14.128 netmask 255.255.255.128 gw 10.64.15.218
+post-up route add -net 10.64.15.64  netmask 255.255.255.192 gw 10.64.15.218
+post-up route add -net 10.64.15.128 netmask 255.255.255.224 gw 10.64.15.218
+post-up route add -net 10.64.12.0   netmask 255.255.254.0   gw 10.64.15.218
+
+```
+## Minastir
+
+```
+# A18 - to Amonsul
+auto eth0
+iface eth0 inet static
+    address 10.64.15.214
+    netmask 255.255.255.252
+    gateway 10.64.15.213
+
+# A16 - to Anor
+auto eth1
+iface eth1 inet static
+    address 10.64.15.205
+    netmask 255.255.255.252
+
+# A6 - LAN
+auto eth2
+iface eth2 inet static
+    address 10.64.14.1
+    netmask 255.255.255.128
+
+post-up route add default gw 10.64.15.213
+post-up route add -net 10.64.15.192 netmask 255.255.255.248 gw 10.64.15.206  # A15
+post-up route add -net 10.64.15.160 netmask 255.255.255.240 gw 10.64.15.206  # A11
+
+```
+
+## Anor
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.206
+    netmask 255.255.255.252
+    gateway 10.64.15.205
+
+auto eth1
+iface eth1 inet static
+    address 10.64.4.1
+    netmask 255.255.252.0
+
+auto eth2
+iface eth2 inet static
+    address 10.64.15.193
+    netmask 255.255.255.248
+
+post-up route add default gw 10.64.15.205
+post-up route add -net 10.64.15.184 netmask 255.255.255.248 gw 10.64.15.194 # A14
+post-up route add -net 10.64.15.1   netmask 255.255.255.192 gw 10.64.15.194 # A13
+```
+
+## Eregion
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.218
+    netmask 255.255.255.252
+    gateway 10.64.15.217
+
+auto eth1
+iface eth1 inet static
+    address 10.64.15.221
+    netmask 255.255.255.252
+
+auto eth2
+iface eth2 inet static
+    address 10.64.14.129
+    netmask 255.255.255.128
+
+post-up route add default gw 10.64.15.217
+
+post-up route add -net 10.64.15.128 netmask 255.255.255.224 gw 10.64.15.222  # A2
+post-up route add -net 10.64.15.64  netmask 255.255.255.192 gw 10.64.15.222  # A3
+post-up route add -net 10.64.12.0   netmask 255.255.254.0   gw 10.64.15.222  # A1
+post-up route add -net 10.64.15.161 netmask 255.255.255.240 gw 10.64.15.222  # A8
+
+```
+
+## NUMENOR
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.222
+    netmask 255.255.255.252
+    gateway 10.64.15.221
+
+auto eth1
+iface eth1 inet static
+    address 10.64.15.225
+    netmask 255.255.255.252
+
+auto eth2
+iface eth2 inet static
+    address 10.64.15.229
+    netmask 255.255.255.252
+
+auto eth3
+iface eth3 inet static
+    address 10.64.15.233
+    netmask 255.255.255.252
+
+# A9 LAN
+auto eth4
+iface eth4 inet static
+    address 10.64.0.1
+    netmask 255.255.252.0
+
+post-up route add default gw 10.64.15.221
+
+```
+
+## Gudur
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.226
+    netmask 255.255.255.252
+    gateway 10.64.15.225
+
+auto eth1
+iface eth1 inet static
+    address 10.64.14.129
+    netmask 255.255.255.128
+
+
+```
+
+## Mordor
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.230
+    netmask 255.255.255.252
+    gateway 10.64.15.229
+
+```
+
+## Erain
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.234
+    netmask 255.255.255.252
+    gateway 10.64.15.233
+
+```
+
+## Valinor
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.177
+    netmask 255.255.255.248
+
+auto eth1
+iface eth1 inet static
+    address 10.64.12.1
+    netmask 255.255.254.0
+
+```
+
+## Valmar
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.129
+    netmask 255.255.255.224
+
+auto eth1
+iface eth1 inet static
+    address 10.64.15.65
+    netmask 255.255.255.192
+
+auto eth2
+iface eth2 inet static
+    address 10.64.14.129
+    netmask 255.255.255.128
+
+```
+
+## Shadow 
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.12.2
+    netmask 255.255.254.0
+    gateway 10.64.12.1
+
+```
+
+## Anarion
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.12.3
+    netmask 255.255.254.0
+    gateway 10.64.12.1
+
+```
+
+## Lindon
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.12.4
+    netmask 255.255.254.0
+    gateway 10.64.12.1
+
+```
+
+## Fornost
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.14.2
+    netmask 255.255.255.128
+    gateway 10.64.14.1
+
+auto eth1
+iface eth1 inet static
+    address 10.64.15.201
+    netmask 255.255.255.252
+
+```
+
+## Morgoth 
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.185
+    netmask 255.255.255.248
+
+```
+
+## Throne
+```
+auto eth0
+iface eth0 inet static
+    address 10.64.15.193
+    netmask 255.255.255.248
+
+auto eth1
+iface eth1 inet static
+    address 10.64.15.185
+    netmask 255.255.255.248
+
+```
